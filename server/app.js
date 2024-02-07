@@ -4,6 +4,22 @@
 
 // STEP 1: Import and initialize server, configure for JSON requests
 // Your code here
+const express = require("express");
+
+const port = 5000;
+
+const app = express();
+app.use(express.json());
+app.listen(port, () => console.log("listening on port ", port));
+
+app.get("/users/:user", (req, res) => {
+  const userId = req.params.user;
+  res.status(200).send(`User details for user (${userId}):`);
+});
+
+app.get("/", (req, res) => {
+  res.send("ium alive");
+});
 
 // HTTP Server: Handle route with param (/users/:userId) sending plain-text response
 //     let reqBody = "";
